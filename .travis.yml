@@ -1,8 +1,17 @@
-dist: trusty
-os: linux
 language: cpp
+os: linux
+dist: trusty
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-6
+env:
+  global:
+  - CC: gcc-6
+  - CXX: g++-6
 before_script:
-- command -v update-alternatives
 - echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" | sudo tee -a /etc/apt/sources.list
 - sudo apt-get update -qq
 - sudo apt-get install libboost-test-dev -y
